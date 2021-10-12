@@ -1,0 +1,372 @@
+# el-training 
+
+## About this curriculum 
+
+This document is a curriculum for new employee education to learn the basics of Ruby on Rails and its peripheral technologies, which are essential for Manyo. 
+Regardless of the ability of new employees, you will be required to carry out one step. 
+The training period is not specified. 
+The training will be completed when all steps are completed. 
+
+This curriculum assumes the following characters. 
+
+--New employee: A student of this curriculum. 
+--Supporter: We provide education, guidance, and advice for new employees. It also plays the role of consulting with new employees and deciding specifications together. 
+
+It is at the discretion of the supporter how much the supporter is involved in the guidance. In addition, regarding the training period, the supporters will set a guideline in advance, taking into consideration the skill level of new employees and the status of internal projects. 
+
+## Overview 
+
+### System requirements In 
+
+this curriculum, you will be asked to develop a task management system as an issue. 
+The task management system wants to do the following: 
+
+--I want to easily register my 
+task-I want to be able to set an expiration date for a 
+task-I want to prioritize tasks-I want 
+to manage the status (not started / started / completed)  
+-I want to narrow down tasks by status
+-with the task name / task description I want to search for a task 
+to list tasks. I want to sort on the list screen (based on priority, deadline, etc.) 
+- I want to label tasks and classify them-I want to 
+register as a user so that I can see only the tasks I registered. 
+
+Also, the above requirements To meet this requirement, we would like to have the following management functions. 
+--User 
+
+management function 
+### Support browser 
+
+-Support browser is assumed to be the latest version of macOS / Chrome 
+
+### Application (server) configuration 
+
+Please build using the following languages ​​and middleware () Both are the latest stable versions). 
+
+--Ruby 
+--Ruby on Rails --For the 
+PostgreSQL 
+
+server, please use the following. 
+
+--Heroku 
+
+* Performance requirements and security requirements are not specified, but please make it with general quality. 
+  If the response of the site is too bad, please improve it. 
+
+## Final goal of 
+
+this curriculum At the end of this curriculum, it is assumed that you will learn the following items. 
+
+--Being able to implement basic Web applications 
+using Rails-Being able to publish applications using a general environment with Rails applications 
+can add functions and maintain data for published Rails applications-
+--Learn the flow of PR and merging on GitHub. Also, learn the necessary Git commands-to 
+  be able to commit at an appropriate particle size-to be able to 
+  write a proper PR description-to be able 
+  to respond to reviews and make corrections-to 
+team up with unclear points at the right time 
+
+Being able to ask questions to members and related parties (this time I will be a supporter) orally or by chat ## Recommended books In 
+
+advancing the training curriculum, we recommend the following books as recommended books. 
+
+-[ 
+
+Ruby on Rails 5 Quick Learning Practice Guide that can be used in the field ] (https://book.mynavi.jp/ec/products/detail/id=93905) Ruby on Rails 5 Quick Learning Practice Guide that can be used in the field is a training curriculum The subject is the task management system as well. 
+Therefore, I think there are many points that can be helpful in advancing this training. 
+
+It also explains what was not covered in this training and how to proceed with team development. Please refer to it. 
+
+## A collection of topics useful for development 
+
+topics.md are summarized in topics.md that were not included in a specific task step, but we would like you to utilize them. Please refer to and utilize it as necessary when implementing the curriculum. 
+
+## Challenge Step 
+#### 1-1: Install Ruby
+
+### Step 1: Build a Rails development environment-Use
+
+
+-Use [rbenv] (https://github.com/rbenv/rbenv) to install the latest version of Ruby-Check 
+that the Ruby version is displayed with the `ruby -v` command Please 
+
+#### 1-2: Install Rails-Install 
+
+Rails with Gem command-Install the 
+latest version of Rails-Make sure the 
+`rails -v` command shows your Rails version Please 
+
+#### 1-3: Install database (PostgreSQL) 
+  -Install 
+
+PostgreSQL on your OS-For macOS, install it with `brew` etc. 
+
+### Step 2: Install the repository on GitHub Let's create-Let's 
+
+install Git at hand-For 
+  macOS, please install with `brew` etc.- 
+  Let's register user name and email address with` gitconfig` 
+-Let's think about application name (= repository name) 
+--Create a repository- 
+  Get it if you don't have an account- Create an 
+  empty repository on it 
+
+### Step 3: Create a Rails project
+
+--Let's create the minimum required directories and files for the application with the `rails new` command-Create 
+a directory called` docs` directly under the project directory (application name directory) created by `rails new`, and this Let's commit the document file-to keep 
+  the specifications of this app under control so that they can be viewed at any time- 
+push the created app to the repository created on GitHub-to 
+use Ruby to specify the version Put your version in `Gemfile` (make sure Rails already has the version) 
+
+### Step 4: Think about the image of the application you want to build- 
+
+what before you go about designing Think about becoming an app or a complete image (with supporters). Screen design by paper prototyping is recommended- 
+  Also, think about how this app will be used (whether it will be published on the Internet, for internal use, etc ...) (with supporters). Let's 
+read the system requirements and think about the required data structure- 
+  what model (table) is likely to be needed- 
+  what information is needed in the table- 
+if you think about the data structure , Let's write it by hand on the model diagram-let's write the 
+  when it's done and put it in the repository
+  --Write the table schema in `README.md` (model name, column name, data type) 
+
+* It is not necessary to create the correct model diagram at this time. Let's make it as an assumption at the moment ( 
+
+Imagine fixing it if you think it is wrong in future steps) ### Step 5: Let's set the database connection (peripheral setting) 
+
+-First, a new topic branch with Git Let's cut 
+  - and later, will continue to commit to the work on the topic branch 
+- Bundler Let's install 
+- `Let's install the` pg` (PostgreSQL database driver) in Gemfile` 
+- `Database.Yml Let's set ` 
+-let's create a database with the` rails db: create` command-let's 
+check the connection to the database with the `rails db` command- 
+create a PR on GitHub and have it reviewed. Sho 
+  - if necessary in the WIP (Work in Progress) try to put out the PR. See the topic collection for more information-please 
+  respond to any comments you may have. If LGTM (Looks Good To Me) has 2 pokes, merge them into the master branch 
+
+### Step 6: 
+Set up RuboCop-Set up RuboCop as Linter / Formatter 
+This curriculum has been adjusted to match the Rails app creation [retrieva-cop] (https //github.com/retrieva/retrieva-cop) 
+apps-[retrieva-cop] in `Gemfile` Let's install https://github.com/retrieva/retrieva-cop) 
+-Introduce Circle CI so that RuboCop is executed when creating a PR- 
+  Considering the difficulty, the form implemented by the supporter But that's okay- 
+following, let's update the coding conventions as needed in consultation with supporter reviewers 
+
+### Step 7: Create a task model Create 
+
+a CRUD to manage your tasks. 
+First of all, let's make it with a simple structure where only the name and details can be registered. 
+
+--Let's create the model class required for CRUD of the task with the `rails generate` command-Create a 
+migration and use it to create a table-We 
+  can guarantee that the migration can be returned to the previous state. Is important! Get in the habit of playing `redo`-make sure you 
+  also set DB constraints-make 
+sure you can connect to the database via the model with the` rails c` command- 
+  try this time Let's create a record with ActiveRecord
+--Set validation-Let's 
+  think about which validation should be added to which column- 
+Create a PR on GitHub and have it reviewed 
+ 
+### step 8: to be able to view and registration, update and delete a task specification
+
+Task list screen, detail screen, creation screen, edit screen , Let's create a delete function. 
+
+Creating these features all at once tends to make your PR huge. 
+Therefore, in step 8, we will proceed with PR by dividing it into multiple parts. 
+
+In future steps, if the PR is likely to increase, consider whether you can issue the PR in two or more. 
+
+### Step 8-1: Let's 
+
+create a task list screen and detail screen-Let's make it possible to display the task created in step 7 on the list screen and detail screen- 
+Controller and view with `rails generate` command Let's create a 
+  - what template or to adopt the engine Let's decide in consultation with the supporters 
+- let's add the necessary implementation to the controller and the view 
+- `edit the routes.rb`,` http: // localhost Let's display the task list screen at: 3000 / `-Let's 
+explain to the supporters what kind of processing is done between the web browser and the server- 
+Create a PR on GitHub and ask them to review with 
+
+### steps 8-2: the task of creating screen, let's create an editing screen 
+
+- let's from the screen to be able to create and edit tasks
+--Let's display a flash message on the screen after creating and updating-Let's display 
+  an error message on the screen when a validation error occurs 
+create a PR on GitHub for review
+
+### Step 8-3: Let's 
+
+be able to delete the task-Let's be able to delete the created task- 
+Display a flash message on the screen after deletion- 
+Create a PR on GitHub and review to ask them 
+
+### steps 8-4: Let's look back the added code 
+
+- for the added code in step 8-1 to 8-3, let's try to explain to the supporters 
+  - class, method, for the variables 
+  - the flow of processing 
+
+### step 9: Let's touch the SQL 
+
+- Let's manipulate the database 
+  - `Let's connect to the database with rails db` command 
+  - viewing tasks in SQL, create, update, let's delete 
+- Let's access the task list screen and check that the SQL log is flowing-Let's 
+  explain to the supporter what kind of SQL is being executed-What kind of SQL is being executed by 
+the method of ActiveRecord Luke Let's check 
+  - `rails Let's run like` find` and `where` in C` 
+
+# # # step 10: to write a test 
+  - Prepare `spec / spec_helper.rb` and` spec / rails_helper.rb`
+
+- Get ready for writing Spec 
+- Let's write the model spec for the validation 
+  - actually does not write the test of so validation, let's do in order to provide a thorough understanding of the model spec 
+- Let's write a system spec for the task function-Let's 
+integrate RSpec with Circle CI and notify Slack- 
+  Similar to step 6, it can be done by the supporter- 
+Reference book: https //leanpub.com/everydayrailsrspec-jp 
+
+### Step 11: Let's standardize the Japanese part of the app-Let's 
+
+use Rails' i18n mechanism to output the validation error message in Japanese 
+
+# ## Step 12: Let's set the Rails time zone-Let's set the 
+
+Rails time zone to Japan (Tokyo) 
+
+### Step 13: Let's sort the task list in order of creation date and time- 
+
+Sort in order of current ID But let's sort this in descending order of creation date-let's 
+write in the system spec that the sorting is working 
+
+### Step 14: Let's deploy- 
+
+simple in the master branch Now that we have a task management system, let's deploy it. 
+--Let's deploy to Heroku
+  --If you don't have an account, let's create it- 
+--If it-- Touch the deployed app on Heroku
+  From now on, let's register tasks in this app and proceed with development- 
+  * However, Heroku applications can be referenced anywhere on the Internet, so please do not post information that is bad to publish Let's- 
+    You may 
+  want to include Basic authentication at this point- Let's continue to deploy your app to Heroku after each step-The 
+deployment method is described in `README.md`. Let's 
+  -At that time, it is better to include the version information of the framework used in this app etc. 
+
+### Step 15: Let's add the 
+
+expiration date-to be able to register the expiration date for the task Let's do it-Let's 
+sort by expiration date on the list screen- 
+Expand the spec-Publicize and 
+review, let's release 
+
+### Step 16: Status Let's add it so that it can be searched- 
+
+Let's add status (not started / started / completed) 
+  -[Option] If you are not a beginner, you may introduce a gem that manages the state. 
+  --Let 
+'s make it possible to search by title and status on the list screen-[Option] If you are not a beginner, you may install a Gem that makes it convenient to implement search such as ransack. 
+When narrowing down, check the changes in the issued SQL by looking at the log-Get 
+  in the habit of checking as needed in the following steps- 
+Paste the search index Let's do
+  --Prepare a certain amount of test data, check the operation while looking at log / development.log, and check that the speed is improved by adding an index 
+  .-[Option] Use PostgreSQL explain etc. Let's also look at index usage on the database side-let's 
+add a model spec to the search (let's expand the system spec as well) 
+
+### Step 17: Set priorities (※ people with similar implementation experience is optional) 
+
+for the task, let's be able to register a priority (high-intermediate-low) - 
+- try to be sorted in order of preference 
+- let's expand the System Spec 
+- Once you've publicized and reviewed it, let's release it (continue) 
+
+### Step 18: Add 
+
+Pagenations- Try adding pagenations to your list screen using a gem called Kaminari Let's 
+
+### Step 19: Let's guess the design- 
+
+Introduce Bootstrap and apply the design to the apps you have created- 
+  [Option] Write and design your own CSS 
+
+### Step 20: User model Let's create-Let's create a 
+
+user model- 
+  associate the index the association 
+first user with seed
+--Let's link the first user created with seed and the 
+  task- * When deploying to Heroku, make sure that the already registered task and user are linked (data maintenance) 
+
+### Step 21: Implement login / logout functionality- 
+
+do it yourself, without additional 
+  gems-Understand how HTTP cookies and Sessions in Rails work by not using gems such as Devise The purpose is 
+  to deepen-It also aims to deepen the understanding of general authentication (such as password handling) 
+--Implement a login screen- 
+If you are not logged in, go to the task management page. Let's prevent transition- 
+When creating a task, let's associate the task with the logged-in user-Let's 
+display only the task created by ourselves- 
+Let's implement the logout function 
+
+## # Step 22: Implement a user admin screen- 
+
+Add an admin menu on the 
+screen-Be sure to prefix the admin screen with the URL `/ admin`- 
+  Add it to` routes.rb` Before, let's design by assuming the URL and routing name (name that becomes `* _path`) in advance- 
+Implement user list / create / update / delete
+--Once you delete a user, try to delete the tasks that the user has- 
+Set the error page appropriately according to the situation 
+the user has-Display the number of tasks that the user has on the user list screen. Let's do it
+  --Incorporate a mechanism to avoid the N + 1 problem-Let's 
+see a list of user-created tasks 
+
+### Step 23: Add roles to 
+
+users-Users with admin users Let's distinguish between general users-let's make 
+only the admin user access the user admin screen-let's make 
+  a dedicated exception when a general user accesses the admin screen- 
+  exception Let's supplement and display the error page properly (you can do it in step 25) --Let 
+'s select the role on the user management screen- 
+Delete it so that no one of the management users is gone Let's control-Let's 
+  use model callbacks- 
+* You can use or not use Gem freely 
+
+### Step 24: Let's make 
+
+tasks labelable-Multiple labels for tasks Let's make it 
+attach- Let's make it searchable by the attached label 
+
+### Step 25: Set the error page properly-I 
+
+created the default error page provided by Rails Let's go to the screen-At
+You have completed the educational curriculum !!
+--Two 
+  types of status code settings, page 404 and page 500, are required at least. 
+
+## Postscript 
+Thank you for your hard work. 
+
+I couldn't cover it in this curriculum, but I think that the following topics will be needed in the future, so I think it's a good idea to proceed with learning (I think that you will often learn through projects). 
+
+--Deepen a basic understanding of web applications- 
+  Understanding HTTP and HTTPS- 
+Learn a little more advanced use of Rails- 
+  STI 
+  --Logging 
+  -Explicit transactions 
+  -Asynchronous processing 
+  -Asset pipeline (rather release type) Topic) 
+-A better 
+understanding of frontends such as JavaScript and CSS- A better understanding of databases- 
+  SQL- 
+  Building more performance-focused queries- 
+  A better understanding of indexes-A better understanding of 
+server environments- 
+  Linux OS 
+  --Web server (Nginx) settings 
+  -Application server (Unicorn) settings- 
+  Understanding PostgreSQL settings-Understanding 
+release tools- 
+  Capistrano
+  --Ansible
