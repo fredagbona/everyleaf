@@ -3,9 +3,18 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all.order(created_at: :desc).page(params[:page]).per(2)
-    @tasks = Task.all.order(expiration_date: :desc).page(params[:page]).per(2) if params[:sort_expired] == 'true' 
-    @tasks = Task.all.order(priority: :desc).page(params[:page]).per(2) if params[:sort_priority] == 'true' 
+    if current_user.admin = true
+      @tasks = Task.all.order(created_at: :desc).page(params[:page]).per(2)
+      @tasks = Task.all.order(expiration_date: :desc).page(params[:page]).per(2) if params[:sort_expired] == 'true' 
+      @tasks = Task.all.order(priority: :desc).page(params[:page]).per(2) if params[:sort_priority] == 'true'
+    
+    else  
+
+    @tasks = current_user.tasks.all.order(created_at: :desc).page(params[:page]).per(2)
+    @tasks = current_user.tasks.all.order(expiration_date: :desc).page(params[:page]).per(2) if params[:sort_expired] == 'true' 
+    @tasks = current_user.tasks.all.order(priority: :desc).page(params[:page]).per(2) if params[:sort_priority] == 'true' 
+
+    end 
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -24,6 +33,7 @@ class TasksController < ApplicationController
   # POST /tasks or /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.user_id = current_user.id
 
     respond_to do |format|
       if @task.save

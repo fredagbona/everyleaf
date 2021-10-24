@@ -18,4 +18,6 @@ class Task < ApplicationRecord
         medium: 1,
         high: 2
     }
+
+    belongs_to :user, optional: true
 end

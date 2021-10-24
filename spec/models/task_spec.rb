@@ -21,6 +21,7 @@ RSpec.describe Task, type: :model do
     before do
       @task_01 = FactoryBot.create(:task)
       @task_02 = FactoryBot.create(:ndtask)
+      @task_03 = FactoryBot.create(:thrdtask)
 
     end
     context 'Test de portée' do
