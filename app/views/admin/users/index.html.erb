@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" email="IE=edge">
+    <meta name="viewport" email="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <title>Everyleaf - Admin Dashboard</title>
+</head>
+<body>
+    <%= render 'partials/head' %>
+      <div class="row">
+          <div class="col-3 text-center pt-5 "> <%= notice %> </div>
+          <div class="col-6">
+            <table class="table table-primary table-striped table-hover">
+                
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Admin Rights</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                
+                <% @users.each do |user|%>
+        
+                    <tr>
+                      <td> <%= user.name %> </td>
+                      <td> <%= user.email %></td>
+                      <td> <%= user.admin %></td>
+                      <td>
+                      <% if current_user.id != user.id %>
+                        <%= link_to 'Show', admin_user_path(user.id) %>
+                      <% end %> 
+                    </td>
+                    <td>
+                        <%= link_to 'Edit', edit_admin_user_path(user.id) %>
+                       
+                    </td>
+                    <% if current_user.id != user.id %>
+                    <td>
+                        <%= link_to 'Delete', admin_user_path(user.id),  method: "delete", data: {confirm: "Are you sure ?"}  %>
+                        
+                    </td>
+                    <% end %>
+                    </tr>
+          
+                <% end %>
+            </table>
+          </div>
+          <div class="col-3">
+              <%= link_to 'New User', new_admin_user_path %>
+          </div>
+      </div>
+      
+      <%= render 'partials/foot' %>
+
+      
+</body>
+</html>

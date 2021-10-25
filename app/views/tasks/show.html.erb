@@ -1,0 +1,31 @@
+<div class="alert alert-primary" role="alert">
+ <p id="notice"><%= notice %></p>
+</div>
+
+<p>
+  <strong>Name:</strong>
+  <%= @task.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @task.description %>
+</p>
+
+<p>
+  <strong>Expiration Date:</strong>
+  <%= @task.expiration_date %>
+</p>
+
+<p>
+  <strong>Status :</strong>
+  <%= @task.status %>
+</p>
+
+<p>
+  <strong>Priority :</strong>
+  <%= @task.priority %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

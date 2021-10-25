@@ -1,0 +1,65 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  
+</head>
+
+
+  <div class="row">
+    <div class="col-4">
+      <%= render 'partials/sidebar' %>
+    </div>
+    <div class="col-8 ">
+          <h1 class="text-center">My tasks</h1>
+    <div class="d-flex justify-content-evenly">
+      <table>
+                  <tr>
+                    <th>Task Name</th>
+                    <th>Description</th>
+                    <th>Creation Date</th>
+                     <th>Status</th>
+                    <th>Priority </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+          <% @tasks.each do |task| %>
+              <tr>
+       
+                <td class="task_row"><%= task.name %></td>
+                <td><%= task.description %></td>
+                <td><%= task.expiration_date %></td>
+                <td><%= task.created_at %></td>
+                <td><%= task.status %></td>
+                <td><%= task.priority %></td>
+                <td><%= link_to 'Show', task, class: "btn btn-outline-primary btn-sm" %></td>
+                <td><%= link_to 'Edit', edit_task_path(task), class: "btn btn-outline-success btn-sm" %></td>
+                <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
+              </tr>
+           <% end %>
+  
+      </table>
+
+
+
+
+
+    </div>
+    
+  </div>
+
+<%= render 'partials/foot' %>
+
+
+
+
+
+
+
+
