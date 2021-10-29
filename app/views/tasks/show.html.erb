@@ -27,5 +27,15 @@
   <%= @task.priority %>
 </p>
 
+<p>
+    <strong>Etiquettes associés : </strong>
+  <% if @task.labels.present? %>
+            <% @task.labels.each do |l| %>
+              <span class="label"><%= l.name %></span>
+            <% end %>
+  <% end %>
+</p>
+
+
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
