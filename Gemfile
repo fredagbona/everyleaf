@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-#ruby '2.6.5'
+ruby '2.6.5'
 
 gem 'rails', '~> 5.2.6'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -11,7 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-gem 'bcrypt'
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'kaminari'
 
 gem 'bootsnap', '>= 1.1.0', require: false
