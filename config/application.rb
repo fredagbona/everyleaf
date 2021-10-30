@@ -19,6 +19,10 @@ module Everyleaf
                        controller_specs: false,
                        request_specs: false
     end
+    config.time_zone = 'Berlin'
+    config.i18n.default_locale = :en
+     
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
