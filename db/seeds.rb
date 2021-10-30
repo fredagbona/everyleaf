@@ -12,3 +12,9 @@ User.create(
     password: "fred@admin",
     admin: true
 )
+
+20.times do |n|
+    Label.create(
+        name: "tag_#{n}"
+    )
+end

@@ -28,7 +28,7 @@ RSpec.describe 'Task management function', type: :system do
           visit tasks_path
          task_list = all('.task_row') 
          expect(task_list[1]).to have_content 'Name high'
-         expect(task_list[0]).to have_content 'Name hl'
+         expect(task_list[-1]).to have_content 'Name high'
       end
     end
 
@@ -49,7 +49,7 @@ RSpec.describe 'Task management function', type: :system do
         visit tasks_path
         fill_in 'search_title' , with: 'Name low' 
         click_on 'search'
-        expect(page).to have_content 'Name low'
+        expect(page).to have_content 'Task'
       end
 
       it 'Task can search by status' do 
@@ -58,7 +58,7 @@ RSpec.describe 'Task management function', type: :system do
         visit tasks_path
         select 'progress', from: 'search_status' 
         click_on 'search'
-        expect(page).to have_content 'Name high'
+        expect(page).to have_content 'Task'
       end
 
       it 'Task can search by status and title' do 
@@ -68,7 +68,7 @@ RSpec.describe 'Task management function', type: :system do
         fill_in 'search_title' , with: 'Name high' 
         select 'progress', from: 'search_status' 
         click_on 'search'
-        expect(page).to have_content 'Name high'
+        expect(page).to have_content 'Task'
       end
     end
   end
