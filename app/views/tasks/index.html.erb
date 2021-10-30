@@ -19,7 +19,7 @@
            class: 'search_priority form-control',
            prompt: 'priority'%>
 
-          <%= f.select :search_label, @labels.collect { |p| [p.name, p.id]}, class: "search_label", prompt: 'Tag' %>
+        <%= f.select :search_label, Label.all.collect { |p| [p.name, p.id]}, class: "search_label", prompt: 'Tag' %>
        
 
     <%= f.submit 'search' ,class:'btn btn-light'%>
